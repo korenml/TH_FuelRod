@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heSolidThermo;
+    mixture         pureMixture;
+    transport       UO2poly;
+    thermo          hUO2poly;//hPolynomial;//
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+mixture
+{
+    specie
+    {
+        molWeight   270;
+    }
+
+    transport
+    {
+    	Tref	700;
+        kappaCoeffs<8>   (14.55 -0.02851 2.879e-5 -1.4e-8 2.609e-12 0 0 0);
+    }
+
+    thermodynamics
+    {
+    	Tref	298.15;
+        Hf      0;
+		Sf		0;
+        CpCoeffs<8>      (193.236 325.708e-3 -311.969e-6 116.809e-9 -9.752e-12 0 0 0);
+    }
+
+    equationOfState
+    {
+        rho     10370;
+    }
+}
+
+// ************************************************************************* //

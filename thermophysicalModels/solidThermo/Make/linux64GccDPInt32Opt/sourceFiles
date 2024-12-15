@@ -1,0 +1,8 @@
+SOURCE = \
+solidThermo/solidThermo.C \
+solidThermo/solidThermos.C \
+solidReactionThermo/solidReactionThermo.C \
+solidReactionThermo/solidReactionThermos.C \
+solidThermo/heZoneSolidThermos.C \
+
+# sources

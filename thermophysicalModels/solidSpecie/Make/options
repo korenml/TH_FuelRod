@@ -1,0 +1,7 @@
+EXE_INC = \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/specie/lnInclude \
+    -I$(FOAM_SRC)/thermophysicalModels/thermophysicalProperties/lnInclude
+
+LIB_LIBS = \
+    -L$(FOAM_USR_LIBBIN) \
+    -lspecie

@@ -1,0 +1,26 @@
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/fileFormats/lnInclude \
+    -I$(LIB_SRC)/surfMesh/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/transportModels/compressible/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/basic/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/specie/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/solidThermo/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/SLGThermo/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/thermophysicalProperties/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/reactionThermo/lnInclude \
+    -I$(LIB_SRC)/parallel/distributed/lnInclude
+
+LIB_LIBS = \
+    -lfiniteVolume \
+    -lfileFormats \
+    -lsurfMesh \
+    -lmeshTools \
+    -lcompressibleTransportModels \
+    -L$(FOAM_USR_LIBBIN)fluidThermophysicalModels \
+    -L$(FOAM_USR_LIBBIN)specie \
+    -L$(FOAM_USR_LIBBIN)solidThermo \
+    -L$(FOAM_USR_LIBBIN)SLGThermo \
+    -L$(FOAM_USR_LIBBIN)thermophysicalProperties \
+    -ldistributed

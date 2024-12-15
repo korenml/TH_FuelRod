@@ -1,0 +1,86 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2206                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     chtMultiRegionSimpleFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;//nextWrite;//
+
+endTime         8000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      1;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+
+functions
+{
+	fieldMinMax1
+	{
+ 	   // Mandatory entries (unmodifiable)
+	    type        fieldMinMax; // For OF- v2006 etc.
+	    //libs		("libfieldFunctionObjects.so"); // For OF-8
+	    libs        (fieldFunctionObjects);
+	    // Mandatory entries (runtime modifiable)
+	    region		coolant;
+	    mode        magnitude;
+	    log			yes;
+	    fields      (U T nut p_rgh);
+
+	}
+	
+	avgOutlets
+    {
+        type            surfaceFieldValue;
+        libs            (fieldFunctionObjects);
+        writeControl    writeTime;
+        log             yes;
+        writeFields     no;
+        writeControl    timeStep;
+	    writeInterval   1;
+        region			coolant;
+        regionType      patch;
+        name            zmax;
+        operation       areaAverage;
+        //weightField     phi;
+        fields
+        (
+            U
+            T
+        );
+    }
+}
+
+// ************************************************************************* //

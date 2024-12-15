@@ -1,0 +1,15 @@
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/transportModels/compressible/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/basic/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/specie/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/thermophysicalProperties/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/thermophysicalModels/reactionThermo/lnInclude
+
+LIB_LIBS = \
+    -lfiniteVolume \
+    -lcompressibleTransportModels \
+    -L$(FOAM_USR_LIBBIN) \
+    -lfluidThermophysicalModels \
+    -lthermophysicalProperties \
+    -lreactionThermophysicalModels

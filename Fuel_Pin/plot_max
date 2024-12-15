@@ -1,0 +1,31 @@
+set terminal wxt size 600,600
+set multiplot layout 2,2
+set title "Temperature"
+set ylabel 'Temperature'
+set xlabel 'Iteration'
+
+plot "< cat log | grep 'min(T)' |  cut -d ' ' -f7 " title 'T_{coolant} min' with lines, \
+"< cat log | grep 'max(T)' | cut -d ' ' -f7 " title 'T_{coolant} max' with lines
+
+set title "Velocity"
+set ylabel 'Velocity'
+
+plot "< cat log | grep 'min(mag(U))' |  cut -d ' ' -f7 " title 'U_{coolant} min' with lines, \
+"< cat log | grep 'max(mag(U))' | cut -d ' ' -f7 " title 'U_{coolant} max' with lines
+
+set title "Pressure"
+set ylabel 'Pressure'
+
+plot "< cat log | grep 'min(p_rgh)' |  cut -d ' ' -f7 " title 'p_{coolant} min' with lines, \
+"< cat log | grep 'max(p_rgh)' | cut -d ' ' -f7 " title 'p_{coolant} max' with lines
+
+set title "Eddy viscosity"
+set ylabel 'Eddy viscosity'
+
+plot "< cat log | grep 'min(nut)' |  cut -d ' ' -f7 " title 'nut_{coolant} min' with lines, \
+"< cat log | grep 'max(nut)' | cut -d ' ' -f7 " title 'nut_{coolant} max' with lines
+
+unset multiplot
+pause 1
+reread
+

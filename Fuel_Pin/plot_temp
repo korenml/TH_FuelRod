@@ -1,0 +1,19 @@
+set terminal wxt size 600,600
+set multiplot layout 2,2
+set title "Temperatures"
+set ylabel 'Temperature'
+set xlabel 'Iteration'
+
+plot "< cat log | grep -A9 'coolant' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f1 " title 'T_{coolant} min' with lines, \
+"< cat log | grep -A9 'coolant' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f2 " title 'T_{coolant} max' with lines
+
+plot "< cat log | grep -A5 'cladding' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f1 " title 'T_{cladding} min' with lines, \
+"< cat log | grep -A5 'cladding' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f2 " title 'T_{cladding} max' with lines
+
+plot "< cat log | grep -A5 'fuel' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f1 " title 'T_{fuel} min' with lines, \
+"< cat log | grep -A5 'fuel' | grep 'Min/max T:' | cut -d ':' -f2 | cut -d ' ' -f2 " title 'T_{fuel} max' with lines
+
+unset multiplot
+pause 1
+reread
+

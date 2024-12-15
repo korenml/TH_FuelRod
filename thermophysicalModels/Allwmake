@@ -1,0 +1,44 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/wmake/scripts/AllwmakeParseArguments
+
+#------------------------------------------------------------------------------
+
+wmakeLnInclude -u thermophysicalProperties
+
+wclean $targetType specie
+wclean $targetType solidSpecie
+wclean $targetType thermophysicalProperties
+
+#wclean $targetType basic
+#wclean $targetType reactionThermo
+#wclean $targetType laminarFlameSpeed
+#wclean $targetType chemistryModel
+#wclean $targetType barotropicCompressibilityModel
+#wclean $targetType SLGThermo
+
+
+wclean $targetType solidThermo
+#wclean $targetType solidChemistryModel
+
+#wclean $targetType radiation
+
+
+wmake $targetType specie
+wmake $targetType solidSpecie
+wmake $targetType thermophysicalProperties
+
+#wmake $targetType basic
+#wmake $targetType reactionThermo
+#wmake $targetType laminarFlameSpeed
+#wmake $targetType chemistryModel
+#wmake $targetType barotropicCompressibilityModel
+#wmake $targetType SLGThermo
+
+
+wmake $targetType solidThermo
+#wmake $targetType solidChemistryModel
+
+#wmake $targetType radiation
+
+#------------------------------------------------------------------------------
