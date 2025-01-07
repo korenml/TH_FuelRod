@@ -1,0 +1,1 @@
+LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/libsourceTime_b679a172b5978b17e7298c8374c3e383af1151a0
