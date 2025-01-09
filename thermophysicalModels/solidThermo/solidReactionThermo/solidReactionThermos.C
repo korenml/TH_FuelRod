@@ -37,6 +37,8 @@ License
 #include "constAnIsoSolidTransport.H"
 #include "exponentialSolidTransport.H"
 #include "UO2polySolidTransport.H"
+#include "E110polySolidTransport.H"
+#include "E125polySolidTransport.H"
 
 #include "reactingMixture.H"
 #include "multiComponentMixture.H"

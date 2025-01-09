@@ -44,6 +44,8 @@ License
 #include "exponentialSolidTransport.H"
 #include "polynomialSolidTransport.H"
 #include "UO2polySolidTransport.H"
+#include "E110polySolidTransport.H"
+#include "E125polySolidTransport.H"
 #include "tabulatedSolidTransport.H"
 #include "tabulatedAnIsoSolidTransport.H"
 #include "pureMixture.H"
@@ -189,6 +191,30 @@ makeSolidThermo
     sensibleEnthalpy,
     hPolynomialThermo,
     rhoConst,
+    specie
+);
+
+makeSolidThermo
+(
+    solidThermo,
+    heSolidThermo,
+    pureMixture,
+    E110polySolidTransport,
+    sensibleEnthalpy,
+    hPolynomialThermo,
+    icoPolynomial,
+    specie
+);
+
+makeSolidThermo
+(
+    solidThermo,
+    heSolidThermo,
+    pureMixture,
+    E125polySolidTransport,
+    sensibleEnthalpy,
+    hPolynomialThermo,
+    icoPolynomial,
     specie
 );
 

@@ -49,6 +49,8 @@ Description
 #include "exponentialSolidTransport.H"
 #include "polynomialSolidTransport.H"
 #include "UO2polySolidTransport.H"
+#include "E110polySolidTransport.H"
+#include "E125polySolidTransport.H"
 #include "tabulatedSolidTransport.H"
 
 #include "sensibleEnthalpy.H"
@@ -209,6 +211,35 @@ namespace Foam
             >
         > hPolyTranspUO2PolyConstSolidThermoPhysics;
 
+    typedef
+        E110polySolidTransport
+        <
+            species::thermo
+            <
+                hPolynomialThermo
+                <
+                    icoPolynomial<specie, 8>,
+                    8
+                >,
+                sensibleEnthalpy
+            >,
+            8
+        > hPolyTranspE110PolyIcoSolidThermoPhysics;
+
+    typedef
+        E125polySolidTransport
+        <
+            species::thermo
+            <
+                hPolynomialThermo
+                <
+                    icoPolynomial<specie, 8>,
+                    8
+                >,
+                sensibleEnthalpy
+            >,
+            8
+        > hPolyTranspE125PolyIcoSolidThermoPhysics;
 }
 
 
