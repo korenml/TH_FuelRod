@@ -18,7 +18,7 @@ thermoType
 {
     type            heSolidThermo;
     mixture         pureMixture;
-    transport       polynomial;
+    transport       E110poly;
     thermo          hPolynomial;
     equationOfState rhoConst;
     specie          specie;
@@ -34,6 +34,7 @@ mixture
 
     transport
     {
+    	Tref			300;
         kappaCoeffs<8>   (7.51 2.09e-2 -1.45e-5 7.67e-9 0 0 0 0);
     }
 
